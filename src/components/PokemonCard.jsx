@@ -1,19 +1,7 @@
 import React from 'react';
 
-const PokemonCard = () => {
-  const pokemonList = [
-    {
-      name: "Bulbasaur", 
-      imgSrc: 
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-    },
-    {
-      name:"Mew",
-    },
-  ];
-
-  const pokemon = pokemonList[0];
-
+const PokemonCard = (props) => {
+  const {pokemon} = props ;
   return (
     <figure>
       {pokemon.imgSrc ? (
@@ -25,6 +13,5 @@ const PokemonCard = () => {
     </figure>
   );
 };
-
 
 export default PokemonCard;
