@@ -1,7 +1,11 @@
 import './App.css'
-import PokemonCard from './components/PokemonCard';
-import React, { useState } from 'react';
-import NavBar from './components/NavBar';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import { useState } from 'react'
+import PropTypes from "prop-types";
+import PokemonCard from "./components/PokemonCard"
+import NavBar from "./components/NavBar"
+
 
 const pokemonList = [
   {
@@ -29,30 +33,22 @@ const pokemonList = [
     },
   ];
 
-function App() {
+  function App() {
+    const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const handlePokemonChange = (index) => {
+    setPokemonIndex(index);
+  };
 
-  const handleClickPrevious = () => {
-    setPokemonIndex(pokemonIndex - 1)}
-
-  const handleClickNext = () => {
-      setPokemonIndex(pokemonIndex + 1)}
-
-  const pokemon = pokemonList[pokemonIndex];
+  const currentPokemon = pokemonList[pokemonIndex];
 
   return (
-    <>
     <div>
+      <PokemonCard pokemon={currentPokemon} />
       <NavBar
-      onPreviousClick={handleClickPrevious}
-      onNextClick={handleClickNext}
-      isPreviousDisabled={pokemonIndex === 0}
-      isNextDisabled={pokemonIndex === pokemonList.length - 1}
-      />
-      <PokemonCard pokemon={pokemon}/>
+      pokemonList={pokemonList} setThePokemon={handlePokemonChange}
+    />
     </div>
-    </>
   );
 }
 
