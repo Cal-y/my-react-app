@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import PokemonCard from './PokemonCard';
 
 
-function NavBar({ pokemonList, setThePokemon }) {
+function NavBar(props) {
+ const { pokemonList, setThePokemon } = props
   return(
     <div>
       {pokemonList.map((pokemon, i) => (
